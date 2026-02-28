@@ -662,7 +662,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 const popup = document.querySelector("#contactPopup .contact-options");
                 if (!popup) return;
 
-                // আগে থেকে থাকলে আবার যোগ করবে না
                 if (popup.querySelector(".bkash-direct-option")) return;
 
                 const bkashBox = document.createElement("a");
@@ -670,12 +669,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 bkashBox.target = "_blank";
                 bkashBox.className = "contact-option bkash-direct-option";
                 bkashBox.style.background = "#e2136e";
+                bkashBox.style.display = "flex";
+                bkashBox.style.alignItems = "center";
+                bkashBox.style.gap = "15px";
 
                 bkashBox.innerHTML = `
-                    <div class="contact-icon"></div>
+                    <div class="contact-icon" style="width:40px;height:40px;">
+                        <svg viewBox="0 0 100 100" width="40" height="40">
+                            <circle cx="50" cy="50" r="50" fill="white"/>
+                            <path d="M65 30L50 45L35 30L30 35L45 50L30 65L35 70L50 55L65 70L70 65L55 50L70 35Z" fill="#e2136e"/>
+                        </svg>
+                    </div>
                     <div class="contact-info">
-                        <h3>Online Buy</h3>
-                        <p>Pay directly via Merchant</p>
+                        <h3 style="color:white;margin:0;">Online Buy (bKash)</h3>
+                        <p style="color:white;margin:0;">Pay directly via bKash Merchant</p>
                     </div>
                 `;
 
