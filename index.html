@@ -642,7 +642,54 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="script.js"></script>
-</body>
+<script src="script.js"></script>
 
+<!-- ====== bKash Online Buy Add ====== -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const merchantLink = "https://shop.bkash.com/YOUR-MERCHANT-NAME"; 
+    // 🔴 এখানে তোমার আসল bKash Merchant Payment Link বসাবে
+
+    const buyButtons = document.querySelectorAll(".buy-btn");
+
+    buyButtons.forEach(function(btn) {
+
+        btn.addEventListener("click", function () {
+
+            setTimeout(function() {
+
+                const popup = document.querySelector("#contactPopup .contact-options");
+                if (!popup) return;
+
+                // আগে থেকে থাকলে আবার যোগ করবে না
+                if (popup.querySelector(".bkash-direct-option")) return;
+
+                const bkashBox = document.createElement("a");
+                bkashBox.href = merchantLink;
+                bkashBox.target = "_blank";
+                bkashBox.className = "contact-option bkash-direct-option";
+                bkashBox.style.background = "#e2136e";
+
+                bkashBox.innerHTML = `
+                    <div class="contact-icon"></div>
+                    <div class="contact-info">
+                        <h3>Online Buy (bKash)</h3>
+                        <p>Pay directly via bKash Merchant</p>
+                    </div>
+                `;
+
+                popup.appendChild(bkashBox);
+
+            }, 200);
+
+        });
+
+    });
+
+});
+</script>
+<!-- ====== End bKash Script ====== -->
+
+</body>
 </html>
