@@ -168,7 +168,7 @@
                     <div class="title-underline"></div>
                 </div>
                 <div class="product-grid">
-                    <div class="product-card tilt-card">
+                    <div class="product-card tilt-card" data-product="premium">
                         <div class="video-container">
                             <iframe width="100%" height="200"
                                 src="https://www.youtube.com/embed/red6F4b41dE?autoplay=1&mute=1"
@@ -200,7 +200,7 @@
                         <button class="buy-btn" onclick="openContactPopup()">Buy Now</button>
                         <div class="tilt-glare"></div>
                     </div>
-                    <div class="product-card tilt-card">
+                    <div class="product-card tilt-card" data-product="aimbot">
                         <div class="video-container">
                             <iframe width="100%" height="200"
                                 src="https://www.youtube.com/embed/eokDEkbRvbk?autoplay=1&mute=1"
@@ -231,7 +231,7 @@
                         <button class="buy-btn" onclick="openContactPopup()">Buy Now</button>
                         <div class="tilt-glare"></div>
                     </div>
-                    <div class="product-card tilt-card border">
+                    <div class="product-card tilt-card border" data-product="streamer">
                         <div class="video-container">
                             <iframe width="100%" height="200"
                                 src="https://www.youtube.com/embed/eokDEkbR?autoplay=1&mute=1"
@@ -262,7 +262,7 @@
                         <button class="buy-btn" onclick="openContactPopup()">Buy Now</button>
                         <div class="tilt-glare"></div>
                     </div>
-                    <div class="product-card tilt-card">
+                    <div class="product-card tilt-card" data-product="uid">
                         <div class="video-container">
                             <iframe width="100%" height="200"
                                 src="https://www.youtube.com/embed/MBZppizY43M?autoplay=1&mute=1"
@@ -293,7 +293,7 @@
                         <button class="buy-btn" onclick="openContactPopup()">Buy Now</button>
                         <div class="tilt-glare"></div>
                     </div>
-                    <div class="product-card tilt-card">
+                   <div class="product-card tilt-card" data-product="modmenu">
                         <div class="video-container">
                             <iframe width="100%" height="200"
                                 src="https://www.youtube.com/embed/7lLA4?autoplay=1&mute=1"
@@ -324,7 +324,7 @@
                         <button class="buy-btn" onclick="openContactPopup()">Buy Now</button>
                         <div class="tilt-glare"></div>
                     </div>
-                    <div class="product-card tilt-card">
+                    <div class="product-card tilt-card" data-product="emote">
                         <div class="video-container">
                             <iframe width="100%" height="200"
                                 src="https://www.youtube.com/embed/7lLA4?autoplay=1&mute=1"
@@ -355,7 +355,7 @@
                         <button class="buy-btn" onclick="openContactPopup()">Buy Now</button>
                         <div class="tilt-glare"></div>
                     </div>
-                    <div class="product-card tilt-card">
+                    <div class="product-card tilt-card" data-product="nonroot">
                         <div class="video-container">
                             <iframe width="100%" height="200"
                                 src="https://www.youtube.com/embed/7lLSA4?autoplay=1&mute=1"
@@ -386,7 +386,7 @@
                         <button class="buy-btn" onclick="openContactPopup()">Buy Now</button>
                         <div class="tilt-glare"></div>
                     </div>
-                    <div class="product-card tilt-card">
+                    <div class="product-card tilt-card" data-product="root">
                         <div class="video-container">
                             <iframe width="100%" height="200"
                                 src="https://www.youtube.com/embed/7lLS4?autoplay=1&mute=1"
@@ -648,44 +648,97 @@
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-    const merchantLink = "https://dash.zinipay.com/exe-elite/product/99a55974-026b-4bef-b398-96735ee25568"; 
-    // 🔴 এখানে তোমার আসল Merchant Payment Link বসাবে
+    // ===== 🔴 সব আলাদা Payment Link এখানে বসাও =====
+    const paymentLinks = {
+        premium: {
+            "1 Weak": "https://dash.zinipay.com/exe-elite/product/99a55974-026b-4bef-b398-96735ee25568",
+            "1 Month": "https://yourlink.com/premium-month",
+            "1 Year": "https://yourlink.com/premium-year",
+            "Lifetime": "https://yourlink.com/premium-life"
+        },
+        aimbot: {
+            "1 Weak": "https://yourlink.com/aimbot-week",
+            "1 Month": "https://yourlink.com/aimbot-month",
+            "1 Year": "https://yourlink.com/aimbot-year",
+            "Lifetime": "https://yourlink.com/aimbot-life"
+        },
+        streamer: {
+            "1 Month": "https://yourlink.com/streamer-month",
+            "1 OB": "https://yourlink.com/streamer-ob",
+            "1 Year": "https://yourlink.com/streamer-year",
+            "Lifetime": "https://yourlink.com/streamer-life"
+        },
+        uid: {
+            "1 month": "https://yourlink.com/uid-month",
+            "1 OB": "https://yourlink.com/uid-ob",
+            "1 Year": "https://yourlink.com/uid-year",
+            "Lifetime": "https://yourlink.com/uid-life"
+        },
+        modmenu: {
+            "1 Weak": "https://yourlink.com/mod-week",
+            "1 Month": "https://yourlink.com/mod-month",
+            "1 OB": "https://yourlink.com/mod-ob",
+            "1 Year": "https://yourlink.com/mod-year"
+        },
+        emote: {
+            "1 Weak": "https://yourlink.com/emote-week",
+            "1 Month": "https://yourlink.com/emote-month",
+            "1 OB": "https://yourlink.com/emote-ob"
+        },
+        nonroot: {
+            "1 Weak": "https://yourlink.com/nonroot-week",
+            "1 Month": "https://yourlink.com/nonroot-month",
+            "1 OB": "https://yourlink.com/nonroot-ob"
+        },
+        root: {
+            "1 Weak": "https://yourlink.com/root-week",
+            "1 Month": "https://yourlink.com/root-month",
+            "1 Year": "https://yourlink.com/root-year",
+            "Lifetime": "https://yourlink.com/root-life"
+        }
+    };
 
-    const buyButtons = document.querySelectorAll(".buy-btn");
+    let selectedDuration = null;
 
-    buyButtons.forEach(function(btn) {
+    // ===== Duration Select =====
+    document.querySelectorAll(".price-option").forEach(option => {
 
-        btn.addEventListener("click", function () {
+        option.addEventListener("click", function () {
 
-            setTimeout(function() {
+            const card = option.closest(".product-card");
 
-                const popup = document.querySelector("#contactPopup .contact-options");
-                if (!popup) return;
+            // Clear previous selection inside this card only
+            card.querySelectorAll(".price-option").forEach(o => o.classList.remove("active"));
+            option.classList.add("active");
 
-                if (popup.querySelector(".bkash-direct-option")) return;
+            selectedDuration = option.querySelector(".duration").innerText.trim();
+        });
 
-                const onlineBox = document.createElement("a");
-                onlineBox.href = merchantLink;
-                onlineBox.target = "_blank";
-                onlineBox.className = "contact-option bkash-direct-option";
-                onlineBox.style.background = "#e2136e";
-                onlineBox.style.display = "flex";
-                onlineBox.style.alignItems = "center";
-                onlineBox.style.gap = "15px";
+    });
 
-                onlineBox.innerHTML = `
-                    <div class="contact-icon">
-                        <img src="online-payment.png" width="40" alt="Online Payment">
-                    </div>
-                    <div class="contact-info">
-                        <h3 style="color:white;margin:0;">Online Buy</h3>
-                        <p style="color:white;margin:0;">Pay instantly via Online Payment</p>
-                    </div>
-                `;
+    // ===== Buy Button Click =====
+    document.querySelectorAll(".buy-btn").forEach(button => {
 
-                popup.appendChild(onlineBox);
+        button.addEventListener("click", function () {
 
-            }, 200);
+            const card = button.closest(".product-card");
+            const product = card.getAttribute("data-product");
+
+            if (!selectedDuration) {
+                alert("Please select duration first!");
+                return;
+            }
+
+            const productLinks = paymentLinks[product];
+
+            if (!productLinks || !productLinks[selectedDuration]) {
+                alert("Payment link not available!");
+                return;
+            }
+
+            const paymentURL = productLinks[selectedDuration];
+
+            window.open(paymentURL, "_blank");
 
         });
 
@@ -693,6 +746,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
-<!-- ====== End Script ====== -->
 </body>
 </html>
