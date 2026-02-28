@@ -644,12 +644,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="script.js"></script>
 
-<!-- ====== bKash Online Buy Add ====== -->
+<!-- ====== Online Buy Add ====== -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
     const merchantLink = "https://shop.bkash.com/YOUR-MERCHANT-NAME"; 
-    // 🔴 এখানে তোমার আসল bKash Merchant Payment Link বসাবে
+    // 🔴 এখানে তোমার আসল Merchant Payment Link বসাবে
 
     const buyButtons = document.querySelectorAll(".buy-btn");
 
@@ -664,29 +664,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (popup.querySelector(".bkash-direct-option")) return;
 
-                const bkashBox = document.createElement("a");
-                bkashBox.href = merchantLink;
-                bkashBox.target = "_blank";
-                bkashBox.className = "contact-option bkash-direct-option";
-                bkashBox.style.background = "#e2136e";
-                bkashBox.style.display = "flex";
-                bkashBox.style.alignItems = "center";
-                bkashBox.style.gap = "15px";
+                const onlineBox = document.createElement("a");
+                onlineBox.href = merchantLink;
+                onlineBox.target = "_blank";
+                onlineBox.className = "contact-option bkash-direct-option";
+                onlineBox.style.background = "#2563eb";
+                onlineBox.style.display = "flex";
+                onlineBox.style.alignItems = "center";
+                onlineBox.style.gap = "15px";
 
-                bkashBox.innerHTML = `
-                    <div class="contact-icon" style="width:40px;height:40px;">
-                        <svg viewBox="0 0 100 100" width="40" height="40">
-                            <circle cx="50" cy="50" r="50" fill="white"/>
-                            <path d="M65 30L50 45L35 30L30 35L45 50L30 65L35 70L50 55L65 70L70 65L55 50L70 35Z" fill="#e2136e"/>
-                        </svg>
+                onlineBox.innerHTML = `
+                    <div class="contact-icon">
+                        <img src="online-payment.png" width="40" alt="Online Payment">
                     </div>
                     <div class="contact-info">
-                        <h3 style="color:white;margin:0;">Online Buy (bKash)</h3>
-                        <p style="color:white;margin:0;">Pay directly via bKash Merchant</p>
+                        <h3 style="color:white;margin:0;">Online Buy</h3>
+                        <p style="color:white;margin:0;">Pay instantly via Online Payment</p>
                     </div>
                 `;
 
-                popup.appendChild(bkashBox);
+                popup.appendChild(onlineBox);
 
             }, 200);
 
@@ -696,7 +693,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
-<!-- ====== End bKash Script ====== -->
-
+<!-- ====== End Script ====== -->
 </body>
 </html>
