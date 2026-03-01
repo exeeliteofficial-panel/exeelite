@@ -724,3 +724,44 @@ window.toggleOnlineOptions = function () {
   box.style.display = "block";
 }
 
+window.addOnlineBuyOption = function () {
+
+    const popup = document.querySelector("#contactPopup .contact-options");
+    if (!popup) return;
+
+    if (popup.querySelector(".online-option")) return;
+
+    let link = "#";
+
+    if (currentProduct === "premium") {
+        link = "https://your-premium-link.com";
+    } 
+    else if (currentProduct === "aimbot") {
+        link = "https://your-aimbot-link.com";
+    } 
+    else if (currentProduct === "streamer") {
+        link = "https://your-streamer-link.com";
+    } 
+    else if (currentProduct === "modmenu") {
+        link = "https://your-modmenu-link.com";
+    }
+
+    const onlineBox = document.createElement("a");
+    onlineBox.href = link;
+    onlineBox.target = "_blank";
+    onlineBox.className = "contact-option online-option";
+    onlineBox.style.background = "#e2136e";
+
+    onlineBox.innerHTML = `
+        <div class="contact-icon">
+            <img src="online-payment.png" width="40">
+        </div>
+        <div class="contact-info">
+            <h3 style="color:white;margin:0;">Online Buy</h3>
+            <p style="color:white;margin:0;">Pay instantly via Online Payment</p>
+        </div>
+    `;
+
+    popup.appendChild(onlineBox);
+};
+
