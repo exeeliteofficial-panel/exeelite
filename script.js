@@ -703,3 +703,9 @@ function toggleOnlineOptions() {
 function goToPayment(link) {
     window.open(link, "_blank");
 }
+
+document.querySelectorAll(".buy-btn").forEach(btn => {
+  btn.addEventListener("click", function () {
+    openContactPopup();
+  });
+});
