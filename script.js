@@ -1,5 +1,20 @@
 // Contact Popup Functions
-window.openContactPopup = function () {
+let currentProduct = null;
+
+window.openContactPopup = function (product) {
+
+  if (!product) return;
+
+  currentProduct = product;
+
+  const popup = document.getElementById('contactPopup');
+
+  if (popup) {
+    popup.style.display = 'flex';
+    popup.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+}
   console.log('openContactPopup called');
   const popup = document.getElementById('contactPopup');
   console.log('Popup element:', popup);
@@ -680,27 +695,32 @@ if (document.readyState === 'loading') {
   initHeroSlider();
 }
 
-// Contact Popup Functions
-function openContactPopup() {
-  const popup = document.getElementById('contactPopup');
-  if (popup) {
-    popup.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-}
-
-function closeContactPopup() {
-  const popup = document.getElementById('contactPopup');
-  if (popup) {
-    popup.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-}
-
 // Close popup on Escape key
 document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') {
     closeContactPopup();
   }
 });
+
+window.toggleOnlineOptions = function () {
+
+  if (!currentProduct) {
+    alert("No product selected!");
+    return;
+  }
+
+  const box = document.getElementById("onlineOptions");
+
+  if (box.style.display === "block") {
+    box.style.display = "none";
+    return;
+  }
+
+  box.innerHTML = `
+    <button onclick="window.location.href='https://yourlink1.com'">1 Day - 50 Tk</button><br><br>
+    <button onclick="window.location.href='https://yourlink2.com'">7 Day - 300 Tk</button>
+  `;
+
+  box.style.display = "block";
+}
 
