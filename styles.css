@@ -1972,3 +1972,24 @@ section {
 .price-btn:hover {
     transform: scale(1.05);
 }
+
+.price-btn {
+    width: 100%;
+    margin: 8px 0;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    background: linear-gradient(135deg,#6366f1,#8b5cf6);
+    color: white;
+    transition: 0.3s;
+}
+
+.price-btn:hover {
+    transform: scale(1.05);
+}
+
+.online-buy {
+    cursor: pointer;
+}
