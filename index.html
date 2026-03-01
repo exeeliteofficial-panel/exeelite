@@ -653,8 +653,28 @@ document.addEventListener("DOMContentLoaded", function () {
             <button class="popup-close" onclick="closeContactPopup()">×</button>
             <h2 class="popup-title">Contact Us to Buy</h2>
             <p class="popup-subtitle">Choose your preferred platform to get in touch</p>
-            <div class="contact-options">
-                <a href="https://discord.gg/qvFaUjYU7j" class="contact-option discord" target="_blank">
+            <div class="contact-options
+
+            <!-- Online Buy Button -->
+<div class="contact-option online-buy" onclick="toggleOnlineOptions()">
+    <div class="contact-icon">
+    </div>
+    <div class="contact-info">
+        <h3>Online Buy</h3>
+        <p>Pay instantly via Payment Gateway</p>
+    </div>
+</div>
+
+<!-- Hidden Price Options -->
+<div id="onlineOptions" style="display:none; margin-top:15px;">
+    <button class="price-btn" onclick="goToPayment('https://paymentlink1.com')">1 Day - 50 Tk</button>
+    <button class="price-btn" onclick="goToPayment('https://paymentlink2.com')">7 Day - 300 Tk</button>
+    <button class="price-btn" onclick="goToPayment('https://paymentlink3.com')">1 Month - 600 Tk</button>
+    <button class="price-btn" onclick="goToPayment('https://paymentlink4.com')">3 Month - 1500 Tk</button>
+    <button class="price-btn" onclick="goToPayment('https://paymentlink5.com')">1 Year - 3000 Tk</button>
+    <button class="price-btn" onclick="goToPayment('https://paymentlink6.com')">Lifetime - 5000 Tk</button>
+</div>
+                <a href="https://discord.gg/qvFaUjY"U7j class="contact-option discord" target="_blank">
                     <div class="contact-icon">
                         <svg viewBox="0 0 24 24" fill="currentColor">
                             <path
@@ -697,25 +717,6 @@ document.addEventListener("DOMContentLoaded", function () {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="script.js"></script>
 
-<!-- Online Buy Popup -->
-<div id="contactPopup" class="contact-popup">
-  <div class="popup-content">
-    <span class="close-btn" onclick="closeContactPopup()">&times;</span>
 
-    <h2>Select Purchase Option</h2>
-
-    <button class="buy-option-btn" onclick="showOnlineBuy()">Online Buy</button>
-
-    <div id="onlineOptions" style="display:none; margin-top:20px;">
-      <button class="price-btn" onclick="goToPayment('https://paymentlink1.com')">1 Day - 50 Tk</button>
-      <button class="price-btn" onclick="goToPayment('https://paymentlink2.com')">7 Day - 300 Tk</button>
-      <button class="price-btn" onclick="goToPayment('https://paymentlink3.com')">1 Month - 600 Tk</button>
-      <button class="price-btn" onclick="goToPayment('https://paymentlink4.com')">3 Month - 1500 Tk</button>
-      <button class="price-btn" onclick="goToPayment('https://paymentlink5.com')">1 Year - 3000 Tk</button>
-      <button class="price-btn" onclick="goToPayment('https://paymentlink6.com')">Lifetime - 5000 Tk</button>
-    </div>
-
-  </div>
-</div>
 </body>
 </html>
