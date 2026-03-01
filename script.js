@@ -746,6 +746,30 @@ function toggleOnlineOptions() {
             { name: "1 Month - 1200 Tk", link: "https://paymentlink6.com" }
         ];
     }
+   if (currentProduct === "uid") {
+    packages = [
+        { name: "1 Month - 600 Tk", link: "https://yourlink1.com" },
+        { name: "Lifetime - 3000 Tk", link: "https://yourlink2.com" }
+    ];
+}
+
+if (currentProduct === "emote") {
+    packages = [
+        { name: "1 Month - 480 Tk", link: "https://yourlink3.com" }
+    ];
+}
+
+if (currentProduct === "nonroot") {
+    packages = [
+        { name: "1 Month - 350 Tk", link: "https://yourlink4.com" }
+    ];
+}
+
+if (currentProduct === "root") {
+    packages = [
+        { name: "1 Month - 600 Tk", link: "https://yourlink5.com" }
+    ];
+}
 
     // যদি packages না থাকে → কিছুই দেখাবে না
     if (packages.length === 0) {
