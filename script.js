@@ -680,22 +680,6 @@ if (document.readyState === 'loading') {
   initHeroSlider();
 }
 
-// Contact Popup Functions
-function openContactPopup() {
-  const popup = document.getElementById('contactPopup');
-  if (popup) {
-    popup.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-}
-
-function closeContactPopup() {
-  const popup = document.getElementById('contactPopup');
-  if (popup) {
-    popup.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-}
 
 // Close popup on Escape key
 document.addEventListener('keydown', function (e) {
@@ -703,32 +687,19 @@ document.addEventListener('keydown', function (e) {
     closeContactPopup();
   }
 });
-function showOnlineBuy() {
-  document.getElementById("onlineOptions").style.display = "block";
-}
-
-function goToPayment(link) {
-  window.location.href = link;
-}
+// Online Buy Toggle
 function toggleOnlineOptions() {
     const box = document.getElementById("onlineOptions");
-    if (box.style.display === "none") {
+    if (!box) return;
+
+    if (box.style.display === "none" || box.style.display === "") {
         box.style.display = "block";
     } else {
         box.style.display = "none";
     }
 }
 
-function goToPayment(link) {
-    window.open(link, "_blank");
-}
-
-
-function toggleOnlineOptions() {
-    const box = document.getElementById("onlineOptions");
-    box.style.display = box.style.display === "none" ? "block" : "none";
-}
-
+// Go To Payment
 function goToPayment(link) {
     window.open(link, "_blank");
 }
