@@ -43,7 +43,7 @@ window.openContactPopup = function (product) {
   } else {
     console.error('Popup element not found!');
   }
-}
+
 
 window.closeContactPopup = function () {
   console.log('closeContactPopup called');
