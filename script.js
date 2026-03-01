@@ -687,25 +687,79 @@ document.addEventListener('keydown', function (e) {
     closeContactPopup();
   }
 });
-// Online Buy Toggle
+let currentProduct = null;
+
+// Open Popup
+function openContactPopup(product) {
+    currentProduct = product;
+    document.getElementById("contactPopup").style.display = "flex";
+}
+
+// Close Popup
+function closeContactPopup() {
+    document.getElementById("contactPopup").style.display = "none";
+    document.getElementById("onlineOptions").style.display = "none";
+}
+
+// Toggle Online Buy Options
 function toggleOnlineOptions() {
     const box = document.getElementById("onlineOptions");
-    if (!box) return;
 
-    if (box.style.display === "none" || box.style.display === "") {
-        box.style.display = "block";
-    } else {
+    if (box.style.display === "block") {
         box.style.display = "none";
+        return;
     }
-}
 
-// Go To Payment
-function goToPayment(link) {
-    window.open(link, "_blank");
-}
+    box.innerHTML = "";
+    let packages = [];
 
-document.querySelectorAll(".buy-btn").forEach(btn => {
-  btn.addEventListener("click", function () {
-    openContactPopup();
-  });
-});
+    // 🔵 PREMIUM
+    if (currentProduct === "premium") {
+        packages = [
+            { name: "1 Day - 50 Tk", link: "https://premium1.com" },
+            { name: "7 Day - 300 Tk", link: "https://premium2.com" },
+            { name: "1 Month - 600 Tk", link: "https://premium3.com" },
+            { name: "3 Month - 1500 Tk", link: "https://premium4.com" },
+            { name: "1 Year - 3000 Tk", link: "https://premium5.com" },
+            { name: "Lifetime - 5000 Tk", link: "https://premium6.com" }
+        ];
+    }
+
+    // 🔵 AIMBOT
+    if (currentProduct === "aimbot") {
+        packages = [
+            { name: "1 Day - 70 Tk", link: "https://aimbot1.com" },
+            { name: "7 Day - 400 Tk", link: "https://aimbot2.com" },
+            { name: "1 Month - 800 Tk", link: "https://aimbot3.com" },
+            { name: "3 Month - 2000 Tk", link: "https://aimbot4.com" },
+            { name: "1 Year - 4000 Tk", link: "https://aimbot5.com" },
+            { name: "Lifetime - 7000 Tk", link: "https://aimbot6.com" }
+        ];
+    }
+
+    // 🔵 STREAMER
+    if (currentProduct === "streamer") {
+        packages = [
+            { name: "1 Month - 1000 Tk", link: "https://streamer1.com" },
+            { name: "Lifetime - 5000 Tk", link: "https://streamer2.com" }
+        ];
+    }
+
+    // 🔵 MOD MENU
+    if (currentProduct === "modmenu") {
+        packages = [
+            { name: "1 Month - 1200 Tk", link: "https://mod1.com" },
+            { name: "Lifetime - 6000 Tk", link: "https://mod2.com" }
+        ];
+    }
+
+    packages.forEach(pkg => {
+        const btn = document.createElement("button");
+        btn.className = "price-btn";
+        btn.innerText = pkg.name;
+        btn.onclick = () => window.open(pkg.link, "_blank");
+        box.appendChild(btn);
+    });
+
+    box.style.display = "block";
+}
