@@ -713,11 +713,7 @@ function goToPayment(link) {
 
 function toggleOnlineOptions() {
     const box = document.getElementById("onlineOptions");
-    if (box.style.display === "none") {
-        box.style.display = "block";
-    } else {
-        box.style.display = "none";
-    }
+    box.style.display = box.style.display === "none" ? "block" : "none";
 }
 
 function goToPayment(link) {
