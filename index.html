@@ -197,7 +197,7 @@
                                 <span class="price">3000 Tk</span>
                             </div>
                         </div>
-                        <button class="buy-btn" onclick="openContactPopup()">Buy Now</button>
+                        <button class="buy-btn" onclick="openContactPopup('premium')">Buy Now</button>
                         <div class="tilt-glare"></div>
                     </div>
                     <div class="product-card tilt-card">
@@ -228,7 +228,7 @@
                                 <span class="price">3000 Tk</span>
                             </div>
                         </div>
-                        <button class="buy-btn" onclick="openContactPopup()">Buy Now</button>
+                        <button class="buy-btn" onclick="openContactPopup('aimbot')">Buy Now</button>
                         <div class="tilt-glare"></div>
                     </div>
                     <div class="product-card tilt-card border">
@@ -259,7 +259,7 @@
                                 <span class="price">8000 Tk</span>
                             </div>
                         </div>
-                        <button class="buy-btn" onclick="openContactPopup()">Buy Now</button>
+                       <button class="buy-btn" onclick="openContactPopup('streamer')">Buy Now</button>
                         <div class="tilt-glare"></div>
                     </div>
                     <div class="product-card tilt-card">
@@ -321,7 +321,7 @@
                                 <span class="price">2000 Tk</span>
                             </div>
                         </div>
-                        <button class="buy-btn" onclick="openContactPopup()">Buy Now</button>
+                        <button class="buy-btn" onclick="openContactPopup('modmenu')">Buy Now</button>
                         <div class="tilt-glare"></div>
                     </div>
                     <div class="product-card tilt-card">
@@ -645,53 +645,7 @@
 <script src="script.js"></script>
 
 <!-- ====== Online Buy Add ====== -->
-<script>
-document.addEventListener("DOMContentLoaded", function () {
 
-    const merchantLink = "https://dash.zinipay.com/exe-elite/product/99a55974-026b-4bef-b398-96735ee25568"; 
-    // 🔴 এখানে তোমার আসল Merchant Payment Link বসাবে
-
-    const buyButtons = document.querySelectorAll(".buy-btn");
-
-    buyButtons.forEach(function(btn) {
-
-        btn.addEventListener("click", function () {
-
-            setTimeout(function() {
-
-                const popup = document.querySelector("#contactPopup .contact-options");
-                if (!popup) return;
-
-                if (popup.querySelector(".bkash-direct-option")) return;
-
-                const onlineBox = document.createElement("a");
-                onlineBox.href = merchantLink;
-                onlineBox.target = "_blank";
-                onlineBox.className = "contact-option bkash-direct-option";
-                onlineBox.style.background = "#e2136e";
-                onlineBox.style.display = "flex";
-                onlineBox.style.alignItems = "center";
-                onlineBox.style.gap = "15px";
-
-                onlineBox.innerHTML = `
-                    <div class="contact-icon">
-                        <img src="online-payment.png" width="40" alt="Online Payment">
-                    </div>
-                    <div class="contact-info">
-                        <h3 style="color:white;margin:0;">Online Buy</h3>
-                        <p style="color:white;margin:0;">Pay instantly via Online Payment</p>
-                    </div>
-                `;
-
-                popup.appendChild(onlineBox);
-
-            }, 200);
-
-        });
-
-    });
-
-});
 </script>
 <!-- ====== End Script ====== -->
 </body>
