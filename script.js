@@ -1,10 +1,21 @@
-   console.log('Popup opened');
+// Contact Popup Functions
+window.openContactPopup = function () {
+  console.log('openContactPopup called');
+  const popup = document.getElementById('contactPopup');
+  console.log('Popup element:', popup);
+  if (popup) {
+    popup.style.display = 'flex';
+    // Trigger reflow
+    popup.offsetHeight;
+    popup.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    console.log('Popup opened');
   } else {
     console.error('Popup element not found!');
   }
 }
 
-
+window.closeContactPopup = function () {
   console.log('closeContactPopup called');
   const popup = document.getElementById('contactPopup');
   if (popup) {
@@ -676,118 +687,25 @@ document.addEventListener('keydown', function (e) {
     closeContactPopup();
   }
 });
-
-
-
-let currentProduct = null;
-
-function openContactPopup(product) {
-
-    // যদি product না আসে → popup খুলবে না
-    if (!product) {
-        console.log("No product selected");
-        return;
-    }
-
-    currentProduct = product;
-
-    const popup = document.getElementById("contactPopup");
-    popup.style.display = "flex";
-}
-
-function closeContactPopup() {
-    const popup = document.getElementById("contactPopup");
-    popup.style.display = "none";
-    document.getElementById("onlineOptions").style.display = "none";
-    document.body.style.overflow = "";
-}
-
-
-
+// Online Buy Toggle
 function toggleOnlineOptions() {
-
-    if (!currentProduct) {
-        console.log("No valid product");
-        return;
-    }
-
     const box = document.getElementById("onlineOptions");
+    if (!box) return;
 
-    if (box.style.display === "block") {
-        box.style.display = "none";
-        return;
-    }
-
-    let packages = [];
-
-    // 🔥 শুধু যেগুলো allowed সেগুলোই থাকবে
-    if (currentProduct === "premium") {
-        packages = [
-            { name: "1 Day - 50 Tk", link: "https://paymentlink1.com" },
-            { name: "7 Day - 300 Tk", link: "https://paymentlink2.com" },
-            { name: "30 Day - 1000 Tk", link: "https://paymentlink3.com" }
-        ];
-    }
-
-    if (currentProduct === "aimbot") {
-        packages = [
-            { name: "7 Day - 500 Tk", link: "https://paymentlink4.com" }
-        ];
-    }
-
-    if (currentProduct === "streamer") {
-        packages = [
-            { name: "30 Day - 1500 Tk", link: "https://paymentlink5.com" }
-        ];
-    }
-
-    if (currentProduct === "modmenu") {
-        packages = [
-            { name: "1 Month - 1200 Tk", link: "https://paymentlink6.com" }
-        ];
-    }
-   if (currentProduct === "uid") {
-    packages = [
-        { name: "1 Month - 600 Tk", link: "https://yourlink1.com" },
-        { name: "Lifetime - 3000 Tk", link: "https://yourlink2.com" }
-    ];
-}
-
-if (currentProduct === "emote") {
-    packages = [
-        { name: "1 Month - 480 Tk", link: "https://yourlink3.com" }
-    ];
-}
-
-if (currentProduct === "nonroot") {
-    packages = [
-        { name: "1 Month - 350 Tk", link: "https://yourlink4.com" }
-    ];
-}
-
-if (currentProduct === "root") {
-    packages = [
-        { name: "1 Month - 600 Tk", link: "https://yourlink5.com" }
-    ];
-}
-
-    // যদি packages না থাকে → কিছুই দেখাবে না
-    if (packages.length === 0) {
-        box.innerHTML = "<p style='color:red;'>Not Available</p>";
+    if (box.style.display === "none" || box.style.display === "") {
         box.style.display = "block";
-        return;
+    } else {
+        box.style.display = "none";
     }
-
-    box.innerHTML = "";
-
-    packages.forEach(pkg => {
-        box.innerHTML += `
-            <button class="package-btn" onclick="goToPayment('${pkg.link}')">
-                ${pkg.name}
-            </button>
-        `;
-    });
-
-    box.style.display = "block";
 }
-   
+
+// Go To Payment
+function goToPayment(link) {
+    window.open(link, "_blank");
+}
+
+document.querySelectorAll(".buy-btn").forEach(btn => {
+  btn.addEventListener("click", function () {
+    openContactPopup();
+  });
+});
