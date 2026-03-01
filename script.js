@@ -682,10 +682,17 @@ document.addEventListener('keydown', function (e) {
 let currentProduct = null;
 
 function openContactPopup(product) {
+
+    // যদি product না আসে → popup খুলবে না
+    if (!product) {
+        console.log("No product selected");
+        return;
+    }
+
     currentProduct = product;
+
     const popup = document.getElementById("contactPopup");
     popup.style.display = "flex";
-    document.body.style.overflow = "hidden";
 }
 
 function closeContactPopup() {
@@ -695,7 +702,15 @@ function closeContactPopup() {
     document.body.style.overflow = "";
 }
 
+
+
 function toggleOnlineOptions() {
+
+    if (!currentProduct) {
+        console.log("No valid product");
+        return;
+    }
+
     const box = document.getElementById("onlineOptions");
 
     if (box.style.display === "block") {
@@ -703,42 +718,50 @@ function toggleOnlineOptions() {
         return;
     }
 
-    box.innerHTML = "";
     let packages = [];
 
+    // 🔥 শুধু যেগুলো allowed সেগুলোই থাকবে
     if (currentProduct === "premium") {
         packages = [
-            { name: "1 Day - 50 Tk", link: "https://premium1.com" },
-            { name: "7 Day - 300 Tk", link: "https://premium2.com" },
-            { name: "1 Month - 600 Tk", link: "https://premium3.com" }
+            { name: "1 Day - 50 Tk", link: "https://paymentlink1.com" },
+            { name: "7 Day - 300 Tk", link: "https://paymentlink2.com" },
+            { name: "30 Day - 1000 Tk", link: "https://paymentlink3.com" }
         ];
     }
 
     if (currentProduct === "aimbot") {
         packages = [
-            { name: "1 Day - 70 Tk", link: "https://aimbot1.com" },
-            { name: "1 Month - 800 Tk", link: "https://aimbot2.com" }
+            { name: "7 Day - 500 Tk", link: "https://paymentlink4.com" }
         ];
     }
 
     if (currentProduct === "streamer") {
         packages = [
-            { name: "1 Month - 1000 Tk", link: "https://streamer1.com" }
+            { name: "30 Day - 1500 Tk", link: "https://paymentlink5.com" }
         ];
     }
 
     if (currentProduct === "modmenu") {
         packages = [
-            { name: "1 Month - 1200 Tk", link: "https://mod1.com" }
+            { name: "1 Month - 1200 Tk", link: "https://paymentlink6.com" }
         ];
     }
 
+    // যদি packages না থাকে → কিছুই দেখাবে না
+    if (packages.length === 0) {
+        box.innerHTML = "<p style='color:red;'>Not Available</p>";
+        box.style.display = "block";
+        return;
+    }
+
+    box.innerHTML = "";
+
     packages.forEach(pkg => {
-        const btn = document.createElement("button");
-        btn.className = "price-btn";
-        btn.innerText = pkg.name;
-        btn.onclick = () => window.open(pkg.link, "_blank");
-        box.appendChild(btn);
+        box.innerHTML += `
+            <button class="package-btn" onclick="goToPayment('${pkg.link}')">
+                ${pkg.name}
+            </button>
+        `;
     });
 
     box.style.display = "block";
