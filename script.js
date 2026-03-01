@@ -676,83 +676,118 @@ document.addEventListener('keydown', function (e) {
     closeContactPopup();
   }
 });
-// ===== POPUP SYSTEM =====
+
+
 
 let currentProduct = null;
 
 function openContactPopup(product) {
-  if (!product) return;
 
-  currentProduct = product;
+    // যদি product না আসে → popup খুলবে না
+    if (!product) {
+        console.log("No product selected");
+        return;
+    }
 
-  const popup = document.getElementById("contactPopup");
-  popup.style.display = "flex";
+    currentProduct = product;
+
+    const popup = document.getElementById("contactPopup");
+    popup.style.display = "flex";
 }
 
 function closeContactPopup() {
-  const popup = document.getElementById("contactPopup");
-  popup.style.display = "none";
-
-  document.getElementById("onlineOptions").style.display = "none";
+    const popup = document.getElementById("contactPopup");
+    popup.style.display = "none";
+    document.getElementById("onlineOptions").style.display = "none";
+    document.body.style.overflow = "";
 }
+
+
 
 function toggleOnlineOptions() {
 
-  if (!currentProduct) {
-    alert("No product selected!");
-    return;
-  }
+    if (!currentProduct) {
+        console.log("No valid product");
+        return;
+    }
 
-  const box = document.getElementById("onlineOptions");
+    const box = document.getElementById("onlineOptions");
 
-  if (box.style.display === "block") {
-    box.style.display = "none";
-    return;
-  }
+    if (box.style.display === "block") {
+        box.style.display = "none";
+        return;
+    }
 
-  let packages = [];
+    let packages = [];
 
-  // Premium Packages
-  if (currentProduct === "premium") {
+    // 🔥 শুধু যেগুলো allowed সেগুলোই থাকবে
+    if (currentProduct === "premium") {
+        packages = [
+            { name: "1 Day - 50 Tk", link: "https://paymentlink1.com" },
+            { name: "7 Day - 300 Tk", link: "https://paymentlink2.com" },
+            { name: "30 Day - 1000 Tk", link: "https://paymentlink3.com" }
+        ];
+    }
+
+    if (currentProduct === "aimbot") {
+        packages = [
+            { name: "7 Day - 500 Tk", link: "https://paymentlink4.com" }
+        ];
+    }
+
+    if (currentProduct === "streamer") {
+        packages = [
+            { name: "30 Day - 1500 Tk", link: "https://paymentlink5.com" }
+        ];
+    }
+
+    if (currentProduct === "modmenu") {
+        packages = [
+            { name: "1 Month - 1200 Tk", link: "https://paymentlink6.com" }
+        ];
+    }
+   if (currentProduct === "uid") {
     packages = [
-      { name: "1 Day - 50 Tk", link: "https://yourlink1.com" },
-      { name: "7 Day - 300 Tk", link: "https://yourlink2.com" },
-      { name: "30 Day - 1000 Tk", link: "https://yourlink3.com" }
+        { name: "1 Month - 600 Tk", link: "https://yourlink1.com" },
+        { name: "Lifetime - 3000 Tk", link: "https://yourlink2.com" }
     ];
-  }
-
-  // Aimbot
-  if (currentProduct === "aimbot") {
-    packages = [
-      { name: "7 Day - 500 Tk", link: "https://yourlink4.com" }
-    ];
-  }
-
-  // Streamer
-  if (currentProduct === "streamer") {
-    packages = [
-      { name: "30 Day - 1500 Tk", link: "https://yourlink5.com" }
-    ];
-  }
-
-  // Mod Menu
-  if (currentProduct === "modmenu") {
-    packages = [
-      { name: "1 Month - 1200 Tk", link: "https://yourlink6.com" }
-    ];
-  }
-
-  box.innerHTML = "";
-
-  packages.forEach(pkg => {
-    box.innerHTML += `
-      <button class="package-btn" onclick="window.location.href='${pkg.link}'">
-        ${pkg.name}
-      </button>
-    `;
-  });
-
-  box.style.display = "block";
 }
 
+if (currentProduct === "emote") {
+    packages = [
+        { name: "1 Month - 480 Tk", link: "https://yourlink3.com" }
+    ];
+}
 
+if (currentProduct === "nonroot") {
+    packages = [
+        { name: "1 Month - 350 Tk", link: "https://yourlink4.com" }
+    ];
+}
+
+if (currentProduct === "root") {
+    packages = [
+        { name: "1 Month - 600 Tk", link: "https://yourlink5.com" }
+    ];
+}
+
+    // যদি packages না থাকে → কিছুই দেখাবে না
+    if (packages.length === 0) {
+        box.innerHTML = "<p style='color:red;'>Not Available</p>";
+        box.style.display = "block";
+        return;
+    }
+
+    box.innerHTML = "";
+
+    packages.forEach(pkg => {
+        box.innerHTML += `
+            <button class="package-btn" onclick="goToPayment('${pkg.link}')">
+                ${pkg.name}
+            </button>
+        `;
+    });
+
+    box.style.display = "block";
+}
+   
