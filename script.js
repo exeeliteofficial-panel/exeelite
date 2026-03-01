@@ -703,4 +703,10 @@ document.addEventListener('keydown', function (e) {
     closeContactPopup();
   }
 });
+function showOnlineBuy() {
+  document.getElementById("onlineOptions").style.display = "block";
+}
 
+function goToPayment(link) {
+  window.location.href = link;
+}
