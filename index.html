@@ -597,24 +597,17 @@
 
 
     
-   <!-- CONTACT POPUP -->
+    <!-- Contact Popup Modal -->
 <div id="contactPopup" class="contact-popup">
+    <div class="popup-overlay" onclick="closeContactPopup()"></div>
 
-  <div class="popup-content">
+    <div class="popup-content">
+        <button class="popup-close" onclick="closeContactPopup()">×</button>
+        <h2 class="popup-title">Contact Us to Buy</h2>
+        <p class="popup-subtitle">Choose your preferred platform</p>
 
-    <span class="close-btn" onclick="closeContactPopup()">&times;</span>
+        <div class="contact-options">
 
-    <h2>Select Option</h2>
-
-    <div class="contact-option online-buy" onclick="toggleOnlineOptions()">
-      Online Buy
-    </div>
-
-    <div id="onlineOptions" style="display:none; margin-top:15px;"></div>
-
-  </div>
-
-</div>
             <!-- Online Buy -->
             <div class="contact-option online-buy" onclick="toggleOnlineOptions()">
                 <div class="contact-icon">💳</div>
