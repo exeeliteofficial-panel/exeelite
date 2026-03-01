@@ -1,6 +1,7 @@
 // Contact Popup Functions
 let currentProduct = null;
 
+
 window.openContactPopup = function (product) {
 
   if (!product) return;
@@ -9,14 +10,28 @@ window.openContactPopup = function (product) {
 
   const popup = document.getElementById('contactPopup');
 
-  if (popup) {
-    popup.style.display = 'flex';
-    popup.classList.add('active');
-    document.body.style.overflow = 'hidden';
+  if (!popup) {
+    console.error("Popup not found!");
+    return;
   }
-}
-  console.log('openContactPopup called');
-  const popup = document.getElementById('contactPopup');
+
+  popup.style.display = 'flex';
+  popup.offsetHeight; // force reflow
+  popup.classList.add('active');
+  document.body.style.overflow = 'hidden';
+
+  // 🔥 Online Buy option refresh
+  const oldOption = popup.querySelector(".online-option");
+  if (oldOption) oldOption.remove();
+
+  addOnlineBuyOption();
+
+  console.log("Popup opened for:", currentProduct);
+};
+
+
+
+
   console.log('Popup element:', popup);
   if (popup) {
     popup.style.display = 'flex';
