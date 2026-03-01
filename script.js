@@ -1,21 +1,10 @@
-// Contact Popup Functions
-window.openContactPopup = function () {
-  console.log('openContactPopup called');
-  const popup = document.getElementById('contactPopup');
-  console.log('Popup element:', popup);
-  if (popup) {
-    popup.style.display = 'flex';
-    // Trigger reflow
-    popup.offsetHeight;
-    popup.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    console.log('Popup opened');
+   console.log('Popup opened');
   } else {
     console.error('Popup element not found!');
   }
 }
 
-window.closeContactPopup = function () {
+
   console.log('closeContactPopup called');
   const popup = document.getElementById('contactPopup');
   if (popup) {
@@ -687,21 +676,25 @@ document.addEventListener('keydown', function (e) {
     closeContactPopup();
   }
 });
+
+
+
 let currentProduct = null;
 
-// Open Popup
 function openContactPopup(product) {
     currentProduct = product;
-    document.getElementById("contactPopup").style.display = "flex";
+    const popup = document.getElementById("contactPopup");
+    popup.style.display = "flex";
+    document.body.style.overflow = "hidden";
 }
 
-// Close Popup
 function closeContactPopup() {
-    document.getElementById("contactPopup").style.display = "none";
+    const popup = document.getElementById("contactPopup");
+    popup.style.display = "none";
     document.getElementById("onlineOptions").style.display = "none";
+    document.body.style.overflow = "";
 }
 
-// Toggle Online Buy Options
 function toggleOnlineOptions() {
     const box = document.getElementById("onlineOptions");
 
@@ -713,43 +706,30 @@ function toggleOnlineOptions() {
     box.innerHTML = "";
     let packages = [];
 
-    // 🔵 PREMIUM
     if (currentProduct === "premium") {
         packages = [
             { name: "1 Day - 50 Tk", link: "https://premium1.com" },
             { name: "7 Day - 300 Tk", link: "https://premium2.com" },
-            { name: "1 Month - 600 Tk", link: "https://premium3.com" },
-            { name: "3 Month - 1500 Tk", link: "https://premium4.com" },
-            { name: "1 Year - 3000 Tk", link: "https://premium5.com" },
-            { name: "Lifetime - 5000 Tk", link: "https://premium6.com" }
+            { name: "1 Month - 600 Tk", link: "https://premium3.com" }
         ];
     }
 
-    // 🔵 AIMBOT
     if (currentProduct === "aimbot") {
         packages = [
             { name: "1 Day - 70 Tk", link: "https://aimbot1.com" },
-            { name: "7 Day - 400 Tk", link: "https://aimbot2.com" },
-            { name: "1 Month - 800 Tk", link: "https://aimbot3.com" },
-            { name: "3 Month - 2000 Tk", link: "https://aimbot4.com" },
-            { name: "1 Year - 4000 Tk", link: "https://aimbot5.com" },
-            { name: "Lifetime - 7000 Tk", link: "https://aimbot6.com" }
+            { name: "1 Month - 800 Tk", link: "https://aimbot2.com" }
         ];
     }
 
-    // 🔵 STREAMER
     if (currentProduct === "streamer") {
         packages = [
-            { name: "1 Month - 1000 Tk", link: "https://streamer1.com" },
-            { name: "Lifetime - 5000 Tk", link: "https://streamer2.com" }
+            { name: "1 Month - 1000 Tk", link: "https://streamer1.com" }
         ];
     }
 
-    // 🔵 MOD MENU
     if (currentProduct === "modmenu") {
         packages = [
-            { name: "1 Month - 1200 Tk", link: "https://mod1.com" },
-            { name: "Lifetime - 6000 Tk", link: "https://mod2.com" }
+            { name: "1 Month - 1200 Tk", link: "https://mod1.com" }
         ];
     }
 
@@ -763,3 +743,4 @@ function toggleOnlineOptions() {
 
     box.style.display = "block";
 }
+   
