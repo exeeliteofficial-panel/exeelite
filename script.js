@@ -680,22 +680,6 @@ if (document.readyState === 'loading') {
   initHeroSlider();
 }
 
-// Contact Popup Functions
-function openContactPopup() {
-  const popup = document.getElementById('contactPopup');
-  if (popup) {
-    popup.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-}
-
-function closeContactPopup() {
-  const popup = document.getElementById('contactPopup');
-  if (popup) {
-    popup.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-}
 
 // Close popup on Escape key
 document.addEventListener('keydown', function (e) {
