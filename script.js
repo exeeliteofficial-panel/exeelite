@@ -1,37 +1,7 @@
 // Contact Popup Functions
-let currentProduct = null;
-
-
-window.openContactPopup = function (product) {
-
-  if (!product) return;
-
-  currentProduct = product;
-
+window.openContactPopup = function () {
+  console.log('openContactPopup called');
   const popup = document.getElementById('contactPopup');
-
-  if (!popup) {
-    console.error("Popup not found!");
-    return;
-  }
-
-  popup.style.display = 'flex';
-  popup.offsetHeight; // force reflow
-  popup.classList.add('active');
-  document.body.style.overflow = 'hidden';
-
-  // 🔥 Online Buy option refresh
-  const oldOption = popup.querySelector(".online-option");
-  if (oldOption) oldOption.remove();
-
-  addOnlineBuyOption();
-
-  console.log("Popup opened for:", currentProduct);
-};
-
-
-
-
   console.log('Popup element:', popup);
   if (popup) {
     popup.style.display = 'flex';
@@ -43,7 +13,7 @@ window.openContactPopup = function (product) {
   } else {
     console.error('Popup element not found!');
   }
-
+}
 
 window.closeContactPopup = function () {
   console.log('closeContactPopup called');
@@ -710,73 +680,32 @@ if (document.readyState === 'loading') {
   initHeroSlider();
 }
 
+
 // Close popup on Escape key
 document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') {
     closeContactPopup();
   }
 });
+// Online Buy Toggle
+function toggleOnlineOptions() {
+    const box = document.getElementById("onlineOptions");
+    if (!box) return;
 
-window.toggleOnlineOptions = function () {
-
-  if (!currentProduct) {
-    alert("No product selected!");
-    return;
-  }
-
-  const box = document.getElementById("onlineOptions");
-
-  if (box.style.display === "block") {
-    box.style.display = "none";
-    return;
-  }
-
-  box.innerHTML = `
-    <button onclick="window.location.href='https://yourlink1.com'">1 Day - 50 Tk</button><br><br>
-    <button onclick="window.location.href='https://yourlink2.com'">7 Day - 300 Tk</button>
-  `;
-
-  box.style.display = "block";
+    if (box.style.display === "none" || box.style.display === "") {
+        box.style.display = "block";
+    } else {
+        box.style.display = "none";
+    }
 }
 
-window.addOnlineBuyOption = function () {
+// Go To Payment
+function goToPayment(link) {
+    window.open(link, "_blank");
+}
 
-    const popup = document.querySelector("#contactPopup .contact-options");
-    if (!popup) return;
-
-    if (popup.querySelector(".online-option")) return;
-
-    let link = "#";
-
-    if (currentProduct === "premium") {
-        link = "https://your-premium-link.com";
-    } 
-    else if (currentProduct === "aimbot") {
-        link = "https://your-aimbot-link.com";
-    } 
-    else if (currentProduct === "streamer") {
-        link = "https://your-streamer-link.com";
-    } 
-    else if (currentProduct === "modmenu") {
-        link = "https://your-modmenu-link.com";
-    }
-
-    const onlineBox = document.createElement("a");
-    onlineBox.href = link;
-    onlineBox.target = "_blank";
-    onlineBox.className = "contact-option online-option";
-    onlineBox.style.background = "#e2136e";
-
-    onlineBox.innerHTML = `
-        <div class="contact-icon">
-            <img src="online-payment.png" width="40">
-        </div>
-        <div class="contact-info">
-            <h3 style="color:white;margin:0;">Online Buy</h3>
-            <p style="color:white;margin:0;">Pay instantly via Online Payment</p>
-        </div>
-    `;
-
-    popup.appendChild(onlineBox);
-};
-
+document.querySelectorAll(".buy-btn").forEach(btn => {
+  btn.addEventListener("click", function () {
+    openContactPopup();
+  });
+});
