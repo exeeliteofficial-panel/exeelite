@@ -25,7 +25,7 @@ window.closeContactPopup = function () {
 // Product Data for Selection Popup
 const productPlans = {
   "Premium Panel": [
-   { duration: "1 Day", price: "55 Tk", link: "https://dash.zinipay.com/exe-elite/product/f818e472-e877-4451-a159-5413358f15b1" },
+   { duration: "1 Day", price: "55 Tk", link: "https://dash.zinipay.com/exe-elite/product/58f2eacc-76ff-4ce8-a25e-4eb5d73d314a" },
    { duration: "3 Days", price: "150 Tk", link: "https://dash.zinipay.com/exe-elite/product/0b406e53-9ed0-438b-a036-06350c8e511a" },
     { duration: "7 Days", price: "300 Tk", link: "https://dash.zinipay.com/exe-elite/product/99a55974-026b-4bef-b398-96735ee25568" },
     { duration: "1 Month", price: "600 Tk", link: "https://dash.zinipay.com/exe-elite/product/965245ea-c5bd-4e20-b0fe-9bb6b5e55e89" },
