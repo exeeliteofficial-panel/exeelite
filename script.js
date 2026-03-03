@@ -41,9 +41,9 @@ const productPlans = {
     { duration: "Lifetime", price: "3000 Tk", link: "https://dash.zinipay.com/exe-elite/product/c58dfda3-e259-446b-8a4e-206bcf9d42f7" }
   ],
   "Streamer Panel": [
-    { duration: "1 OB", price: "1800 Tk", link: "https://exe-elite/product/456-dummy" },
-    { duration: "1 Year", price: "6000 Tk", link: "https://exe-elite/product/456-dummy" },
-    { duration: "Lifetime", price: "8000 Tk", link: "https://exe-elite/product/456-dummy" }
+    { duration: "1 OB", price: "1800 Tk", link: "https://dash.zinipay.com/exe-elite/product/2976c963-3877-46a2-ac29-9fda81bcc231" },
+    { duration: "1 Year", price: "6000 Tk", link: "https://dash.zinipay.com/exe-elite/product/289127ed-16fc-441e-a345-c46df2b533b8" },
+    { duration: "Lifetime", price: "8000 Tk", link: "https://dash.zinipay.com/exe-elite/product/ab2d8fc7-e23d-46b2-bb3e-d3b8ba7cacfe" }
   ]
   
 };
