@@ -25,19 +25,22 @@ window.closeContactPopup = function () {
 // Product Data for Selection Popup
 const productPlans = {
   "Premium Panel": [
-    { duration: "1 Week", price: "300 Tk", link: "https://dash.zinipay.com/exe-elite/product/99a55974-026b-4bef-b398-96735ee25568" },
-    { duration: "1 Month", price: "600 Tk", link: "https://dash.zinipay.com/exe-elite/product/99a55974-026b-4bef-b398-96735ee25568" },
-    { duration: "1 Year", price: "2000 Tk", link: "https://dash.zinipay.com/exe-elite/product/99a55974-026b-4bef-b398-96735ee25568" },
-    { duration: "Lifetime", price: "3000 Tk", link: "https://dash.zinipay.com/exe-elite/product/99a55974-026b-4bef-b398-96735ee25568" }
+   { duration: "1 Day", price: "55 Tk", link: "https://dash.zinipay.com/exe-elite/product/58f2eacc-76ff-4ce8-a25e-4eb5d73d314a" },
+   { duration: "3 Days", price: "150 Tk", link: "https://dash.zinipay.com/exe-elite/product/0b406e53-9ed0-438b-a036-06350c8e511a" },
+    { duration: "7 Days", price: "300 Tk", link: "https://dash.zinipay.com/exe-elite/product/99a55974-026b-4bef-b398-96735ee25568" },
+    { duration: "1 Month", price: "600 Tk", link: "https://dash.zinipay.com/exe-elite/product/965245ea-c5bd-4e20-b0fe-9bb6b5e55e89" },
+    { duration: "1 OBB", price: "1100 Tk", link: "https://dash.zinipay.com/exe-elite/product/f818e472-e877-4451-a159-5413358f15b1" },
+    { duration: "Lifetime", price: "3000 Tk", link: "https://dash.zinipay.com/exe-elite/product/eef129d8-29f4-40cd-977c-8cd560b537b1" }
   ],
   "Aimbot Ai": [
-    { duration: "1 Week", price: "150 Tk", link: "https://dash.zinipay.com/exe-elite/product/123-dummy" },
-    { duration: "1 Month", price: "449 Tk", link: "https://dash.zinipay.com/exe-elite/product/123-dummy" },
-    { duration: "1 Year", price: "2500 Tk", link: "https://dash.zinipay.com/exe-elite/product/123-dummy" },
-    { duration: "Lifetime", price: "3000 Tk", link: "https://dash.zinipay.com/exe-elite/product/123-dummy" }
+   { duration: "1 Day", price: "30 Tk", link: "https://dash.zinipay.com/exe-elite/product/351012af-7185-4cdb-bddc-ba0e533294dd" },
+    { duration: "3 Days", price: "80 Tk", link: "https://dash.zinipay.com/exe-elite/product/7c4c39bd-6a31-40dc-992b-58b598dec435" },
+    { duration: "7 Days", price: "150 Tk", link: "https://dash.zinipay.com/exe-elite/product/3883e318-57ad-47e8-9de0-1aca2436798e" },
+    { duration: "1 Month", price: "450 Tk", link: "https://dash.zinipay.com/exe-elite/product/bec46d3e-7db4-4cac-a00c-69b12d846a26" },
+    { duration: "1 OBB", price: "800 Tk", link: "https://dash.zinipay.com/exe-elite/product/f36b2447-c0bd-492e-adda-cc15a951ea78" },
+    { duration: "Lifetime", price: "3000 Tk", link: "https://dash.zinipay.com/exe-elite/product/c58dfda3-e259-446b-8a4e-206bcf9d42f7" }
   ],
   "Streamer Panel": [
-    { duration: "1 Month", price: "1000 Tk", link: "https://dash.zinipay.com/exe-elite/product/456-dummy" },
     { duration: "1 OB", price: "1800 Tk", link: "https://dash.zinipay.com/exe-elite/product/456-dummy" },
     { duration: "1 Year", price: "6000 Tk", link: "https://dash.zinipay.com/exe-elite/product/456-dummy" },
     { duration: "Lifetime", price: "8000 Tk", link: "https://dash.zinipay.com/exe-elite/product/456-dummy" }
