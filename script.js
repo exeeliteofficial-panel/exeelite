@@ -25,15 +25,15 @@ window.closeContactPopup = function () {
 // Product Data for Selection Popup
 const productPlans = {
   "Premium Panel": [
-   { duration: "1 Day", price: "55 Tk", link: "https://dash.zinipay.com/exe-elite/product/58f2eacc-76ff-4ce8-a25e-4eb5d73d314a" },
-   { duration: "3 Days", price: "150 Tk", link: "https://dash.zinipay.com/exe-elite/product/0b406e53-9ed0-438b-a036-06350c8e511a" },
+    { duration: "1 Day", price: "55 Tk", link: "https://dash.zinipay.com/exe-elite/product/58f2eacc-76ff-4ce8-a25e-4eb5d73d314a" },
+    { duration: "3 Days", price: "150 Tk", link: "https://dash.zinipay.com/exe-elite/product/0b406e53-9ed0-438b-a036-06350c8e511a" },
     { duration: "7 Days", price: "300 Tk", link: "https://dash.zinipay.com/exe-elite/product/99a55974-026b-4bef-b398-96735ee25568" },
     { duration: "1 Month", price: "600 Tk", link: "https://dash.zinipay.com/exe-elite/product/965245ea-c5bd-4e20-b0fe-9bb6b5e55e89" },
     { duration: "1 OBB", price: "1100 Tk", link: "https://dash.zinipay.com/exe-elite/product/f818e472-e877-4451-a159-5413358f15b1" },
     { duration: "Lifetime", price: "3000 Tk", link: "https://dash.zinipay.com/exe-elite/product/eef129d8-29f4-40cd-977c-8cd560b537b1" }
   ],
   "Aimbot Ai": [
-   { duration: "1 Day", price: "30 Tk", link: "https://dash.zinipay.com/exe-elite/product/351012af-7185-4cdb-bddc-ba0e533294dd" },
+    { duration: "1 Day", price: "30 Tk", link: "https://dash.zinipay.com/exe-elite/product/351012af-7185-4cdb-bddc-ba0e533294dd" },
     { duration: "3 Days", price: "80 Tk", link: "https://dash.zinipay.com/exe-elite/product/7c4c39bd-6a31-40dc-992b-58b598dec435" },
     { duration: "7 Days", price: "150 Tk", link: "https://dash.zinipay.com/exe-elite/product/3883e318-57ad-47e8-9de0-1aca2436798e" },
     { duration: "1 Month", price: "450 Tk", link: "https://dash.zinipay.com/exe-elite/product/bec46d3e-7db4-4cac-a00c-69b12d846a26" },
@@ -41,12 +41,12 @@ const productPlans = {
     { duration: "Lifetime", price: "3000 Tk", link: "https://dash.zinipay.com/exe-elite/product/c58dfda3-e259-446b-8a4e-206bcf9d42f7" }
   ],
   "Streamer Panel": [
-   { duration: "1 Month", price: "1000 Tk", link: "https://dash.zinipay.com/exe-elite/product/145621c0-79bc-41bb-bf39-f7fb28edeabe" },
+    { duration: "1 Month", price: "1000 Tk", link: "https://dash.zinipay.com/exe-elite/product/145621c0-79bc-41bb-bf39-f7fb28edeabe" },
     { duration: "1 OB", price: "1800 Tk", link: "https://dash.zinipay.com/exe-elite/product/2976c963-3877-46a2-ac29-9fda81bcc231" },
     { duration: "1 Year", price: "6000 Tk", link: "https://dash.zinipay.com/exe-elite/product/289127ed-16fc-441e-a345-c46df2b533b8" },
     { duration: "Lifetime", price: "8000 Tk", link: "https://dash.zinipay.com/exe-elite/product/ab2d8fc7-e23d-46b2-bb3e-d3b8ba7cacfe" }
   ]
-  
+
 };
 
 let currentSelectedProduct = "";
@@ -164,9 +164,65 @@ function typeText() {
   setTimeout(typeText, typingDelay);
 }
 
+// Click Ripple Effect
+function initClickEffect() {
+  document.addEventListener('mousedown', (e) => {
+    const ripple = document.createElement('div');
+    ripple.className = 'cursor-ripple';
+    ripple.style.left = e.clientX + 'px';
+    ripple.style.top = e.clientY + 'px';
+    document.body.appendChild(ripple);
+
+    setTimeout(() => {
+      ripple.remove();
+    }, 600);
+  });
+}
+
+// Stats Counter Animation
+function initStatsCounter() {
+  const stats = document.querySelectorAll('.stat-number, .support');
+
+  const animate = (el) => {
+    const text = el.textContent.trim();
+    const match = text.match(/^(\d+)(.*)$/); // Separates initial number from the rest
+    if (!match) return;
+
+    const target = parseInt(match[1]);
+    const suffix = match[2];
+    let current = 0;
+    const duration = 2000; // 2 seconds
+    const increment = target / (duration / 16);
+
+    const updateCount = () => {
+      current += increment;
+      if (current < target) {
+        el.textContent = Math.floor(current) + suffix;
+        requestAnimationFrame(updateCount);
+      } else {
+        el.textContent = target + suffix;
+      }
+    };
+    updateCount();
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animate(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  stats.forEach(stat => observer.observe(stat));
+}
+
 // Global initialization
 document.addEventListener("DOMContentLoaded", () => {
   initTiltEffect();
+  initClickEffect();
+  initStatsCounter();
   setTimeout(typeText, 1000);
 
   // Track selected product
